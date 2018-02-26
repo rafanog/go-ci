@@ -5,10 +5,6 @@ jobs:
       - image: circleci/golang:1.9
       - image: circleci/node:9.4.0
       
-    #### TEMPLATE_NOTE: go expects specific checkout path representing url
-    #### expecting it in the form of
-    ####   /go/src/github.com/circleci/go-tool
-    ####   /go/src/bitbucket.org/circleci/go-tool
     working_directory: ~/repo
     steps:
       - checkout
@@ -30,3 +26,5 @@ jobs:
           background: true
       
       - run: sleep 10      
+      
+      - run: node -v
