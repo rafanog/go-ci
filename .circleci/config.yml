@@ -1,31 +1,11 @@
 version: 2
 jobs:
   build:
-    machine: true
+    machine: 
       - image: circleci/classic:edge
       
     working_directory: ~/repo
     steps:
       - checkout
-
-      # specify any bash command here prefixed with `run: `
-      #- run: 
-      #    name: install dependencies
-      #    command: go get -d
-      
       - run: go version
-      
-      #- run: 
-      #    name: set background server credentials
-      #    command: |
-      #      echo "AUTH0_DOMAIN=$domain" >> .env
-      #      echo "AUTH0_AUDIENCE=$audience" >> .env
-      
-      #- run: 
-      #    name: background server
-      #    command: go run main.go
-      #    background: true
-      
-      #- run: sleep 10      
-      
       - run: node -v
