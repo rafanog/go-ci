@@ -1,9 +1,8 @@
 version: 2
 jobs:
   build:
-    machine: 
-      - image: circleci/classic:edge
-    
+    machine: true
+      
     steps:
       - checkout
       - run: go version
