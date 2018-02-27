@@ -42,5 +42,7 @@ jobs:
           name: Prepare and execute tests
           command: | 
             cd test
+            sudo apt-get update
+            sudo apt-get install nodejs
             npm install && npm test
           
