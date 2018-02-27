@@ -37,13 +37,15 @@ jobs:
             echo "AUTH0_CLIENT_ID_4=$id4" >> .env
             echo "AUTH0_CLIENT_SECRET_4=$secret4" >> .env
             echo "API_URL=http://localhost:3010" >> .env
+      -  run:
+          comand: |
+            sudo apt-get update
+            sudo apt-get install nodejs
             
       - run:
           name: Prepare and execute tests
           command: | 
             cd test
-            sudo apt-get update
-            sudo apt-get install nodejs
             node -v
             npm install && npm test
           
