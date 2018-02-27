@@ -16,7 +16,7 @@ jobs:
             echo "AUTH0_AUDIENCE=$audience" >> .env
       
       - run: node -v
-      - run: sudo apt-get install node
+      - run: sudo npm install -g n
       - run: node -v
       
       #- run:
