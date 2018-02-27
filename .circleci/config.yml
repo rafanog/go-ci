@@ -42,6 +42,5 @@ jobs:
           name: Prepare and execute tests
           command: | 
             cd test
-            node -v
-            npm install && npm test
+            npm install && npm install asyncawait && npm test
           
