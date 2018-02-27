@@ -1,6 +1,9 @@
 const chai = require('chai');
 const chaiHttp = require('chai-http');
 const should = require('chai').should();
+const async = require('asyncawait/async');
+const await = require('asyncawait/await');
+
 require('dotenv').config();
 
 chai.use(chaiHttp);
