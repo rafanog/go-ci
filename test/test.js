@@ -190,7 +190,7 @@ describe('Request with authorization header field', function() {
       let clientId = process.env.AUTH0_CLIENT_ID_1;
       let clientSecret = process.env.AUTH0_CLIENT_SECRET_1;
 
-      const token =  await getToken(clientId, clientSecret);
+      const token =  await(getToken(clientId, clientSecret));
       validToken = token.body.access_token;
     }));
 
