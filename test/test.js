@@ -158,7 +158,7 @@ describe('Request with authorization header field', function() {
       let clientId = process.env.AUTH0_CLIENT_ID_1;
       let clientSecret = process.env.AUTH0_CLIENT_SECRET_1;
 
-      const token =  await getToken(clientId, clientSecret);
+      const token =  await(getToken(clientId, clientSecret));
       validToken = token.body.access_token;
     }));
 
@@ -186,13 +186,13 @@ describe('Request with authorization header field', function() {
   context('Valid token without any scope', function() {
     let validToken = null;
     
-    before(async function() {
+    before(async(function() {
       let clientId = process.env.AUTH0_CLIENT_ID_1;
       let clientSecret = process.env.AUTH0_CLIENT_SECRET_1;
 
       const token =  await getToken(clientId, clientSecret);
       validToken = token.body.access_token;
-    });
+    }));
 
     it('GET /api/private return 200 OK', function(done) {
       chai.request(apiURL)
@@ -217,13 +217,13 @@ describe('Request with authorization header field', function() {
   });
 
   context('Valid token with read:messages scope', function() {
-    before(async function() {
+    before(async(function() {
       let clientId = process.env.AUTH0_CLIENT_ID_2;
       let clientSecret = process.env.AUTH0_CLIENT_SECRET_2;
 
-      const token =  await getToken(clientId, clientSecret);
+      const token =  await(getToken(clientId, clientSecret));
       validToken = token.body.access_token;
-    });
+    }));
 
     it('GET /api/private return 200 OK', function(done) {
       chai.request(apiURL)
@@ -249,13 +249,13 @@ describe('Request with authorization header field', function() {
   });
 
   context('Valid token with write:messages scope', function() {
-    before(async function() {
+    before(async(function() {
       let clientId = process.env.AUTH0_CLIENT_ID_3;
       let clientSecret = process.env.AUTH0_CLIENT_SECRET_3;
 
-      const token =  await getToken(clientId, clientSecret);
+      const token =  await(getToken(clientId, clientSecret));
       validToken = token.body.access_token;
-    });
+    }));
 
     it('GET /api/private return 200 OK', function(done) {
       chai.request(apiURL)
@@ -280,13 +280,13 @@ describe('Request with authorization header field', function() {
   });
 
   context('Valid token with read:messages and write:messages scopes', function() {
-    before(async function() {
+    before(async(function() {
       let clientId = process.env.AUTH0_CLIENT_ID_4;
       let clientSecret = process.env.AUTH0_CLIENT_SECRET_4;
 
-      const token =  await getToken(clientId, clientSecret);
+      const token =  await(getToken(clientId, clientSecret));
       validToken = token.body.access_token;
-    });
+    }));
 
     it('GET /api/private return 200 OK', function(done) {
       chai.request(apiURL)
