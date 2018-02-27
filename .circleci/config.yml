@@ -44,5 +44,6 @@ jobs:
             cd test
             sudo apt-get update
             sudo apt-get install nodejs
+            node -v
             npm install && npm test
           
