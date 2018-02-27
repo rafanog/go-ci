@@ -151,7 +151,7 @@ describe('Request with authorization header field', function() {
   context('Token with invalid signature', function() {
     let validToken = null;
 
-    before(async function() {
+    before(function() {
       let clientId = process.env.AUTH0_CLIENT_ID_1;
       let clientSecret = process.env.AUTH0_CLIENT_SECRET_1;
 
