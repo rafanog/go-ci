@@ -39,12 +39,6 @@ jobs:
             echo "API_URL=http://localhost:3010" >> .env
           
       - run:
-          name: update node
-          command:  |
-            sudo apt-get update
-            sudo apt-get install nodejs
-            
-      - run:
           name: Prepare and execute tests
           command: | 
             cd test
