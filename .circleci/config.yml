@@ -42,7 +42,7 @@ jobs:
           name: Prepare and execute tests
           command: | 
             cd test
-            sudo npm install -g n
+            npm install -g n
             node -v
             npm install && npm test
           
