@@ -42,8 +42,5 @@ jobs:
           name: Prepare and execute tests
           command: | 
             cd test
-            npm install -g n
-            sudo n latest
-            node -v
             npm install && npm test
           
