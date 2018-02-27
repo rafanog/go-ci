@@ -42,5 +42,6 @@ jobs:
           name: Prepare and execute tests
           command: | 
             cd test
+            npm -v
             npm install && npm test
           
