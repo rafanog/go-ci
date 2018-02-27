@@ -154,13 +154,13 @@ describe('Request with authorization header field', function() {
   context('Token with invalid signature', function() {
     let validToken = null;
 
-    before(async function() {
+    before(async(function() {
       let clientId = process.env.AUTH0_CLIENT_ID_1;
       let clientSecret = process.env.AUTH0_CLIENT_SECRET_1;
 
       const token =  await getToken(clientId, clientSecret);
       validToken = token.body.access_token;
-    });
+    }));
 
     it('GET /api/private return 401 Unauthorized', function(done) {
       chai.request(apiURL)
