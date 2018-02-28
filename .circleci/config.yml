@@ -15,10 +15,11 @@ jobs:
             echo "AUTH0_DOMAIN=$domain" >> .env
             echo "AUTH0_AUDIENCE=$audience" >> .env
       
-      - run:
-          name: Execute background server
-          command: go run main.go
-          background: true
+      - run: docker build -t auth0-express-api-rs256 .
+      - run: 
+           name: background server
+           command: docker run --name rafa-test --env-file .env -p 3010:3010 -it auth0-express-api-rs256 
+           background: true
       
       - run: sleep 10
       
