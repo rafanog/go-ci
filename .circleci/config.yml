@@ -5,10 +5,6 @@ jobs:
       
     steps:
       - checkout
-      - run: 
-          name: Install dependencies
-          command: go get -d
-      
       - run:
           name: Prepare background server's credentials
           command: |
