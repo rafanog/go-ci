@@ -20,6 +20,12 @@ jobs:
       
       - run: sleep 10
       
+      - run: 
+          name: Clone test script
+          command: git clone http://github.com/rafanog/test-script test
+      
+      - run: ls
+      
       - run:
           name: Prepare unitary tests credentials
           command: |
@@ -41,5 +47,3 @@ jobs:
       #    command: | 
       #      cd test
       #      npm install && npm install asyncawait && npm test
-
-      - run: git --version
