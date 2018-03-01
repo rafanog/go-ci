@@ -64,7 +64,7 @@ func main() {
 
 		var AUTH0_API_ISSUER = "https://" + os.Getenv("AUTH0_DOMAIN") + "/"
 		configuration := auth0.NewConfiguration(client, audience, AUTH0_API_ISSUER, jose.RS256)
-		validator := auth0.NewValidator(configuration)
+		validator := auth0.NewValidator(configuration, nil)
 		token, _ := validator.ValidateRequest(r)
 		result := checkScope(r, validator, token)
 		if result == true {
@@ -99,7 +99,7 @@ func checkJwt(h http.Handler) http.Handler {
 
 		var AUTH0_API_ISSUER = "https://" + os.Getenv("AUTH0_DOMAIN") + "/"
 		configuration := auth0.NewConfiguration(client, audience, AUTH0_API_ISSUER, jose.RS256)
-		validator := auth0.NewValidator(configuration)
+		validator := auth0.NewValidator(configuration, nil)
 
 		_, err := validator.ValidateRequest(r)
 
