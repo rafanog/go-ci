@@ -11,10 +11,10 @@ jobs:
             echo "AUTH0_DOMAIN=$domain" >> .env
             echo "AUTH0_AUDIENCE=$audience" >> .env
       
-      - run: docker build -t auth0-express-api-rs256 .
+      - run: docker build -t api-test-docker-instance .
       - run: 
            name: background server
-           command: docker run --name rafa-test --env-file .env -p 3010:3010 -it auth0-express-api-rs256 
+           command: docker run --name test --env-file .env -p 3010:3010 -it api-test-docker-instance
            background: true
       
       - run: sleep 10
@@ -34,12 +34,11 @@ jobs:
             echo "AUTH0_CLIENT_ID_4=$id4" >> .env
             echo "AUTH0_CLIENT_SECRET_4=$secret4" >> .env
             echo "API_URL=http://localhost:3010" >> .env
-            
-            #npm install && npm install asyncawait && npm test
           
       - run:
           name: Prepare and execute tests
           command: | 
             cd test
             npm install && npm install asyncawait && npm test
-          
+
+      - run: git -v
