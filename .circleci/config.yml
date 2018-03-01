@@ -42,4 +42,4 @@ jobs:
       #      cd test
       #      npm install && npm install asyncawait && npm test
 
-      - run: git -v
+      - run: git --version
