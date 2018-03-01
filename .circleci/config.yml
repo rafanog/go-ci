@@ -40,8 +40,8 @@ jobs:
             echo "AUTH0_CLIENT_SECRET_4=$secret4" >> .env
             echo "API_URL=http://localhost:3010" >> .env
           
-      - run:
-          name: Prepare and execute tests
-          command: | 
-            cd test
-            npm install && npm install asyncawait && npm test
+      #- run:
+      #    name: Prepare and execute tests
+      #    command: | 
+      #      cd test
+      #      npm install && npm install asyncawait && npm test
