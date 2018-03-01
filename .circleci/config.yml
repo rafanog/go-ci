@@ -8,8 +8,8 @@ jobs:
       - run:
           name: Prepare background server's credentials
           command: |
-            echo "AUTH0_DOMAIN=$domain" 
-            echo "AUTH0_AUDIENCE=$audience"
+            echo "AUTH0_DOMAIN=$domain" >> .env
+            echo "AUTH0_AUDIENCE=$audience" >> .env
       
       - run: docker build -t auth0-express-api-rs256 .
       
