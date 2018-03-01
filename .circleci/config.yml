@@ -13,8 +13,10 @@ jobs:
       
       #- run: docker build -t api-test-docker-instance .
       
-      #- run: 
-      #     name: background server
+      - run: 
+           name: background server
+           command: sh exec.sh
+           background: true
       #     command: docker run --name test --env-file .env -p 3010:3010 -it api-test-docker-instance
       #     background: true
       
