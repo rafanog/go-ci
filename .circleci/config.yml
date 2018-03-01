@@ -15,7 +15,7 @@ jobs:
       
       - run: 
            name: background server
-           command: docker run --name test --env-file .env -p 3010:3010 -it auth0-api-docker-test
+           command: docker run --env-file .env -p 3010:3010 -it auth0-api-docker-test
            background: true
       
       - run: sleep 20
