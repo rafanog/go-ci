@@ -2,28 +2,23 @@ version: 2
 jobs:
   build:
     machine: true
+      
     steps:
       - checkout
-      
       - run:
           name: Prepare background server's credentials
           command: |
             echo "AUTH0_DOMAIN=$domain" >> .env
             echo "AUTH0_AUDIENCE=$audience" >> .env
-
+      
       - run: docker build -t auth0-express-api-rs256 .
-     
-      - run:
-          name: background server
-          command: docker run --name rafa-test --env-file .env -p 3010:3010 -it auth0-express-api-rs256
-          background: true
-     
+      - run: 
+           name: background server
+           command: docker run --name rafa-test --env-file .env -p 3010:3010 -it auth0-express-api-rs256 
+           background: true
+      
       - run: sleep 10
       
-      - run:
-          name: Clone script
-          command: git clone http://github.com/rafanog/test-script test
-
       - run:
           name: Prepare unitary tests credentials
           command: |
@@ -37,10 +32,13 @@ jobs:
             echo "AUTH0_CLIENT_ID_3=$id3" >> .env
             echo "AUTH0_CLIENT_SECRET_3=$secret3" >> .env
             echo "AUTH0_CLIENT_ID_4=$id4" >> .env
+            echo "AUTH0_CLIENT_SECRET_4=$secret4" >> .env
             echo "API_URL=http://localhost:3010" >> .env
-        
+            
+            #npm install && npm install asyncawait && npm test
+          
       - run:
-         name: Prepare and execute tests
-         command: |
+          name: Prepare and execute tests
+          command: | 
             cd test
             npm install && npm install asyncawait && npm test
