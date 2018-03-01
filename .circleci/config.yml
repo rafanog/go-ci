@@ -11,37 +11,44 @@ jobs:
             echo "AUTH0_DOMAIN=$domain" >> .env
             echo "AUTH0_AUDIENCE=$audience" >> .env
       
-      - run: docker build -t auth0-express-api-rs256 .
-      
-      - run: 
-           name: background server
-           command: docker run --name rafa-test --env-file .env -p 3010:3010 -it auth0-express-api-rs256 
-           background: true
-      
-      - run: sleep 10
+      #- run: docker build -t auth0-express-api-rs256 .
       
       #- run: 
-      #    name: Clone script test
-      #    command: git clone http://github.com/rafanog
+      #     name: background server
+      #     command: docker run --name rafa-test --env-file .env -p 3010:3010 -it auth0-express-api-rs256 
+      #     background: true
       
-      #- run:
-      #    name: Prepare unitary tests credentials
-      #    command: |
-      #      cd test
-      #      echo "AUTH0_DOMAIN=$domain" >> .env
-      #      echo "AUTH0_AUDIENCE=$audience" >> .env
-      #      echo "AUTH0_CLIENT_ID_1=$id1" >> .env
-      #      echo "AUTH0_CLIENT_SECRET_1=$secret1" >> .env
-      #      echo "AUTH0_CLIENT_ID_2=$id2" >> .env
-      #      echo "AUTH0_CLIENT_SECRET_2=$secret2" >> .env
-      #      echo "AUTH0_CLIENT_ID_3=$id3" >> .env
-      #      echo "AUTH0_CLIENT_SECRET_3=$secret3" >> .env
-      #      echo "AUTH0_CLIENT_ID_4=$id4" >> .env
-      #      echo "AUTH0_CLIENT_SECRET_4=$secret4" >> .env
-      #      echo "API_URL=http://localhost:3010" >> .env
+      - run:
+          name: Background server
+          command: sh exec.sh
+          background: true
           
-      #- run:
-      #    name: Prepare and execute tests
-      #    command: | 
-      #      cd test
-      #      npm install && npm install asyncawait && npm test
+      - run: sleep 10
+      
+      - run: 
+          name: Clone script test
+          command: git clone http://github.com/rafanog
+      
+      - run:
+          name: Prepare unitary tests credentials
+          command: |
+            cd test
+            echo "AUTH0_DOMAIN=$domain" >> .env
+            echo "AUTH0_AUDIENCE=$audience" >> .env
+            echo "AUTH0_CLIENT_ID_1=$id1" >> .env
+            echo "AUTH0_CLIENT_SECRET_1=$secret1" >> .env
+            echo "AUTH0_CLIENT_ID_2=$id2" >> .env
+            echo "AUTH0_CLIENT_SECRET_2=$secret2" >> .env
+            echo "AUTH0_CLIENT_ID_3=$id3" >> .env
+            echo "AUTH0_CLIENT_SECRET_3=$secret3" >> .env
+            echo "AUTH0_CLIENT_ID_4=$id4" >> .env
+            echo "AUTH0_CLIENT_SECRET_4=$secret4" >> .env
+            echo "API_URL=http://localhost:3010" >> .env
+          
+      - run:
+          name: Prepare and execute tests
+          command: cd test && npm install && npm install asyncawait
+      
+      - run:
+          name: Test
+          command: cd test && npm test
