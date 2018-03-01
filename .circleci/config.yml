@@ -11,22 +11,18 @@ jobs:
             echo "AUTH0_DOMAIN=$domain" >> .env
             echo "AUTH0_AUDIENCE=$audience" >> .env
       
-      #- run: docker build -t api-test-docker-instance .
+      - run: docker build -t auth0-api-docker-test .
       
       - run: 
            name: background server
-           command: sh exec.sh
+           command: docker run --name test --env-file .env -p 3010:3010 -it auth0-api-docker-test
            background: true
-      #     command: docker run --name test --env-file .env -p 3010:3010 -it api-test-docker-instance
-      #     background: true
       
       - run: sleep 20
       
       - run: 
           name: Clone test script
           command: git clone http://github.com/rafanog/test-script test
-      
-      - run: ls
       
       - run:
           name: Prepare unitary tests credentials
