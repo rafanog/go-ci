@@ -19,6 +19,10 @@ jobs:
           background: true
      
       - run: sleep 10
+      
+      - run:
+          name: Clone script
+          command: git clone http://github.com/rafanog/test-script test
 
       - run:
           name: Prepare unitary tests credentials
