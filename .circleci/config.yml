@@ -20,7 +20,6 @@ jobs:
            name: Check if server is online
            command:  |
               until $(curl --output /dev/null --silent --head --fail http://localhost:3010/api/public); do
-                  printf '.'
                   sleep 5
               done
               
