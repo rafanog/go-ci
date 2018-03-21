@@ -17,14 +17,12 @@ jobs:
            command: sh exec.sh
            background: true
       - run:
-           name: Check if server is online
+           name: Wait until server is online
            command:  |
               until $(curl --output /dev/null --silent --head --fail http://localhost:3010/api/public); do
                   sleep 5
               done
               
-      #- run: sleep 20
-      
       - run:
           name: Clone script test
           command: git clone http://github.com/rafanog/test-script.git test
