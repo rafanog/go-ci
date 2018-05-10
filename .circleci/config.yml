@@ -10,7 +10,7 @@ jobs:
           name: Set .env file
           command: |
             mv .env.example .env
-            sed 's/{AUTH0_DOMAIN}/$domain' .env
+            sed 's/{AUTH0_DOMAIN}/$domain/' .env
             sed 's/{AUTH0_AUDIENCE}/$audience/' .env
       - run: 
            name: background server
