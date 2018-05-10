@@ -9,9 +9,12 @@ jobs:
       - run: 
           name: Set .env file
           command: |
-            mv .env.example .env
-            sed 's/{AUTH0_DOMAIN}/$domain/' .env
-            sed 's/{AUTH0_AUDIENCE}/$audience/' .env
+          #  mv .env.example .env
+          #  sed 's/{AUTH0_DOMAIN}/$domain/' .env
+          #  sed 's/{AUTH0_AUDIENCE}/$audience/' .env
+            echo "AUTH0_DOMAIN=$domain" >> .env
+            echo "AUTH0_AUDIENCE=$audience" >> 
+      
       - run: 
            name: background server
            command: sh exec.sh
