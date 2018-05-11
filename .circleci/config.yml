@@ -14,10 +14,12 @@ jobs:
               sed 's/{AUTH0_AUDIENCE}/$audience/' .env
           #    echo "AUTH0_DOMAIN=$domain" >> .env
           #    echo "AUTH0_AUDIENCE=$audience" >> .env
-      
       - run: 
            name: background server
-           command: sh exec.sh
+           command: |
+              go get-d
+              go run main.go
+           # sh exec.sh
            background: true
       - run:
            name: Wait until server is online
