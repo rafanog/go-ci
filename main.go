@@ -39,10 +39,10 @@ func main() {
 	if err != nil {
 		log.Print("Error loading .env file")
 	}
-
 	jwtMiddleware := jwtmiddleware.New(jwtmiddleware.Options {
 		ValidationKeyGetter: func(token *jwt.Token) (interface{}, error) {
 			// Verify 'aud' claim
+			log.Print(os.Getenv("AUTH0_AUDIENCE"))
 			aud := os.Getenv("AUTH0_AUDIENCE")
 			checkAud := token.Claims.(jwt.MapClaims).VerifyAudience(aud, false)
 			if !checkAud {
